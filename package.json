@@ -15,7 +15,11 @@
     "@ant-design/pro-components": "^2.4.4",
     "@tinymce/tinymce-react": "^5.0.1",
     "@umijs/max": "^4.2.8",
-    "antd": "^5.4.0"
+    "antd": "^5.4.0",
+    "react": "^18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
