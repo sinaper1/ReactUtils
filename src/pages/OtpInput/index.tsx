@@ -1,6 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
-import OtpInput from "@/components/OtpInput";
 import {useState} from "react";
+import OtpInput from "@/components/OtpInput";
+import './index.less';
 
 const AccessPage: React.FC = () => {
     const [str, setStr] = useState<string>();
@@ -15,7 +16,9 @@ const AccessPage: React.FC = () => {
                 title: '一次性密码输入框',
             }}
         >
-            <OtpInput length={6} isNumber={true} onComplete={onComplete}/>
+            <div className={'otp-input'}>
+                <OtpInput length={6} isNumber={true} onComplete={onComplete}/>
+            </div>
             {str&&<div>{str}</div>}
         </PageContainer>
     );

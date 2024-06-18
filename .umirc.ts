@@ -29,6 +29,11 @@ export default defineConfig({
       path: 'dragTag',
       component: './DragTag',
     },
+    {
+      name: '公式编辑器',
+      path: 'formulaEditor',
+      component: './FormulaEditor',
+    },
   ],
   npmClient: 'pnpm',
 });
