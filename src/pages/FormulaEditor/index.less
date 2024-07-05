@@ -1,9 +1,11 @@
 @hoverStyle: 0 1px 7px rgba(0, 0, 0, 0.5);
 .com-formula-editor {
   &-card {
-    min-height: 80vh;
+    //min-height: 80vh;
+    height: calc(100vh - 170px);
     &-leftCard {
-      min-height: 75vh;
+      //min-height: 75vh;
+      height: calc(100vh - 170px);
       &-title {
         white-space: nowrap;
       }
@@ -20,11 +22,12 @@
       }
     }
     &-rightCard {
+      height: calc(100vh - 170px);
       &-top {
         height: 130px;
       }
       &-bottom {
-        height: calc(80vh - 130px);
+        height: calc(100vh - 300px);
         .ant-pro-card-body {
           padding-inline: 0 !important;
           padding-block: 0 !important;
@@ -37,7 +40,7 @@
 .formula-left-field {
   padding: 0 10px 10px 10px;
   &-tree {
-    max-height: 70vh;
+    height: calc(100vh - 290px);
     overflow-y: scroll;
   }
 }
@@ -50,7 +53,7 @@
     //flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 10px;
-    max-height: 70vh;
+    height: calc(100vh - 300px);
     overflow-y: scroll;
     align-items: start;
     &-item {
@@ -93,7 +96,7 @@
 .formula-left-function {
   padding: 0 10px 10px 10px;
   &-tree {
-    max-height: 70vh;
+    height: calc(100vh - 290px);
     overflow-y: scroll;
   }
 }

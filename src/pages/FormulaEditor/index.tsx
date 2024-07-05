@@ -22,13 +22,29 @@ const EditModal = () => {
     const editorRef = useRef<any>();
     const formulaDataList: API.FormulaValueType[] = []
     const [loading, setLoading] = useState<boolean>(false);
-    const [tabKey, setTabKey] = useState<string>('1');
-    // 公式数据
-    const [formulaList, setFormulaList] = useState<API.FormulaValueType[]>([]);
-    // 公式翻译数据
-    const [translateStr, setTranslateStr] = useState<string>('');
-    // 字段、函数、常量以及运算符等全部可选择的数据
-    const [dataList, setDataList] = useState<DataItem>({});
+    // const [tabKey, setTabKey] = useState<string>('1');
+    // // 公式数据
+    // const [formulaList, setFormulaList] = useState<API.FormulaValueType[]>([]);
+    // // 公式翻译数据
+    // const [translateStr, setTranslateStr] = useState<string>('');
+    // // 字段、函数、常量以及运算符等全部可选择的数据
+    // const [dataList, setDataList] = useState<DataItem>({});
+    const [state, setState] = useState<{
+        loading: boolean,
+        tabKey: string,
+        // 公式数据
+        formulaList: API.FormulaValueType[],
+        // 公式翻译数据
+        translateStr: string,
+        // 字段、函数、常量以及运算符等全部可选择的数据
+        dataList: DataItem,
+    }>({
+        loading: false,
+        tabKey: '1',
+        formulaList: [],
+        translateStr: '',
+        dataList: {},
+    })
     const getFieldDataList = (data: API.FormulaConstantItem[], fatherCode?: string) => {
         // 处理字段数据
         if (data?.length) {
@@ -41,7 +57,10 @@ const EditModal = () => {
                     item[key] = v.title;
                 }
             });
-            setDataList((oldData) => ({ ...item, ...oldData }));
+            setState((prevState)=>({
+                ...prevState,
+                dataList: { ...item, ...prevState.dataList },
+            }));
         }
     };
     const getDataList = async () => {
@@ -52,7 +71,10 @@ const EditModal = () => {
             FormulaSymbol.forEach((v) => {
                 item[v?.code] = v?.title;
             });
-            setDataList((oldData) => ({ ...item, ...oldData }));
+            setState((prevState)=>({
+                ...prevState,
+                dataList: { ...item, ...prevState.dataList },
+            }));
         }
         if (FormulaField?.length) {
             // 获取字段数据
@@ -64,7 +86,10 @@ const EditModal = () => {
             FormulaConstant.forEach((v) => {
                 item[v?.code] = v?.title;
             });
-            setDataList((oldData) => ({ ...item, ...oldData }));
+            setState((prevState)=>({
+                ...prevState,
+                dataList: { ...item, ...prevState.dataList },
+            }));
         }
         if (FormulaFunc?.length) {
             // 获取函数数据
@@ -76,7 +101,10 @@ const EditModal = () => {
         getDataList();
     }, []);
     const onTabsChange = (key: string) => {
-        setTabKey(key);
+        setState((prevState)=>({
+            ...prevState,
+            tabKey: key,
+        }));
     };
 
     /**
@@ -169,7 +197,7 @@ const EditModal = () => {
 
     const handleSubmit = () => {
         // 这可添加提交，语法检查等逻辑
-        console.log(formulaList, translateStr, '---translateStr---');
+        console.log(state.formulaList, state.translateStr, '---translateStr---');
     }
 
     return (
@@ -191,7 +219,7 @@ const EditModal = () => {
                         <ProCard className={'com-formula-editor-card-leftCard'} colSpan="20%">
                             <ProCard split="vertical">
                                 <ProCard>
-                                    <Tabs activeKey={tabKey} items={items} onChange={onTabsChange} />
+                                    <Tabs activeKey={state.tabKey} items={items} onChange={onTabsChange} />
                                 </ProCard>
                             </ProCard>
                         </ProCard>
@@ -210,11 +238,21 @@ const EditModal = () => {
                                     operatorColor={'#22A666'}
                                     editorRef={editorRef}
                                     formulaDataList={formulaDataList}
-                                    dataList={dataList}
-                                    translateStr={translateStr}
-                                    formulaList={formulaList}
-                                    setTranslateStr={setTranslateStr}
-                                    setFormulaList={setFormulaList}
+                                    dataList={state.dataList}
+                                    translateStr={state.translateStr}
+                                    formulaList={state.formulaList}
+                                    setTranslateStr={(value: string)=>{
+                                        setState((prevState)=>({
+                                            ...prevState,
+                                            translateStr: value
+                                        }));
+                                    }}
+                                    setFormulaList={(value: API.FormulaValueType[])=>{
+                                        setState((prevState)=>({
+                                            ...prevState,
+                                            formulaList: value
+                                        }));
+                                    }}
                                 />
                             </ProCard>
                         </ProCard>
