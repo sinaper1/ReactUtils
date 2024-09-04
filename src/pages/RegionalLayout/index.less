@@ -1,0 +1,122 @@
+.regionalLayout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  height: 600px;
+  width: 100%;
+}
+
+.regionalFields {
+  &-card {
+    height: 63vh;
+    &-leftCard {
+      height: 100%;
+      &-searchSite {
+        color: #f50;
+      }
+    }
+    &-rightCard {
+      height: 100%;
+      &-content {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        &-operate {
+          //width: 20vh;
+          padding-right: 24px;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          height: 100%;
+          &-button {
+            margin-bottom: 20px;
+            border-radius: 50%;
+            height: 25px;
+            width: 25px;
+            padding: 0;
+          }
+        }
+        &-table {
+          display: flex;
+          flex-direction: column;
+          height: 88%;
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+        &-head {
+          display: flex;
+          width: 90vh;
+          border-top: 1px solid #cccc;
+        }
+        &-row {
+          display: flex;
+          //flex: 1;
+          width: 90vh;
+          //border-right: 1px solid #cccc;
+          //border-bottom: 1px solid #cccc;
+          &-first {
+            width: 10%;
+            border-right: 1px solid #cccc;
+            border-left: 1px solid #cccc;
+            border-bottom: 1px solid #cccc;
+            padding: 10px;
+            //padding-left: 5px;
+            //padding-right: 5px;
+          }
+          &-second1 {
+            width: 90%;
+            border-right: 1px solid #cccc;
+            border-bottom: 1px solid #cccc;
+            padding: 10px;
+            //padding-left: 5px;
+            //padding-right: 5px;
+            font-size: 14px;
+          }
+          &-second {
+            width: 10%;
+            border-right: 1px solid #cccc;
+            border-bottom: 1px solid #cccc;
+            padding: 10px;
+            //padding-left: 5px;
+            //padding-right: 5px;
+            //line-height: 20px;
+          }
+          &-third {
+            width: 40%;
+            border-right: 1px solid #cccc;
+            border-bottom: 1px solid #cccc;
+            padding: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            //padding-left: 5px;
+            //padding-right: 5px;
+          }
+          &-four {
+            width: 40%;
+            border-right: 1px solid #cccc;
+            border-bottom: 1px solid #cccc;
+            padding: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            //padding-left: 5px;
+            //padding-right: 5px;
+          }
+        }
+      }
+      //&-grid {
+      //  display: grid;
+      //  //grid-template-columns: repeat(4, 1fr);
+      //  grid-template-columns: 10% 15% 25% 50%;
+      //  grid-template-rows: repeat(auto-fill, 1fr);
+      //  grid-column-gap: 0;
+      //  grid-row-gap: 0;
+      //}
+    }
+  }
+}
