@@ -224,7 +224,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
                     if (
                         item?.areaSpan &&
                         (item.areaSpan === value ||
-                            (item.areaSpan > value && item.value <= value) ||
+                            // (item.areaSpan > value && item.value <= value) ||
                             //   被合并区域和当前选中区域的value值奇偶性不一致，一致之前合并的区域在当前合并区域的区间
                             (areaIndex % 2 !== value % 2 && areaIndex < item.areaSpan && value > item.areaSpan))
                     ) {
